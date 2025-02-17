@@ -1,0 +1,74 @@
+* {
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures padding/margins don't break layouts */
+}
+
+body {
+    background-image: url('../static/background.png'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Heading Box */
+.heading-box {
+    /* position: absolute; */
+    align-items: center;
+    text-align: center;
+    /* justify-content: center; */
+    font-size: clamp(24px, 6vw, 60px); /* Prevents text from getting too small or too big */
+    top: 5vh;
+    left: 5vw;
+    z-index: 3;
+    color: black;
+} 
+
+/* Context Box */
+.context-box {
+    position: absolute;
+    right: 10vw;
+    top: 10vh;
+    font-size: clamp(16px, 2vw, 24px); /* Adjusts font size dynamically */
+    width: clamp(200px, 25vw, 400px);
+    height: auto; /* Makes it flexible */
+    padding: 1rem; /* Adds spacing inside */
+    background: rgba(255, 255, 255, 0.8); /* Light background for readability */
+    border-radius: 10px;
+}
+
+/* Centered Image */
+.center-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    opacity: 30%;
+    transform: translate(-50%, -50%);
+    max-width: 90%; /* Ensures image doesn't overflow */
+    height: auto; /* Maintains aspect ratio */
+    z-index: -1;
+}
+
+/* 📱 Mobile View Adjustments */
+@media (max-width: 768px) {
+    .heading-box {
+        font-size: 5vw; /* Smaller heading on mobile */
+        left: 2vw;
+        top: 2vh;
+    }
+
+    .context-box {
+        right: 5vw;
+        top: 5vh;
+        width: 80vw; /* Make it take most of the screen width */
+    }
+
+    .center-img {
+        max-width: 80%; /* Reduce image size for smaller screens */
+    }
+}
