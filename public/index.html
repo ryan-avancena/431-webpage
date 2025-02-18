@@ -4,15 +4,111 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="./css/styles.css">
         <title>homework 2 assignment</title>
+        <style>
+            * {
+                font-size: 16px;
+                box-sizing: border-box; /* Ensures padding/margins don't break layouts */
+            }
+            
+            body {
+                background-image: url('../static/background.png'); 
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: 100vh;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                /* justify-content: center; */
+            }
+
+            h1 {
+                position: absolute;
+                font-size: 3vw; /* Adjusts font size dynamically */
+                left: 50%;
+                top: 20%;
+                transform: translate(-50%, -50%);
+                color: rgb(31, 30, 24);
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds shadow for readability */
+                z-index: 3;
+            }
+            
+            p {
+                font-size: clamp(16px, 2vw, 24px); 
+                padding: 1rem; 
+            }
+
+            .context-box {
+                position: absolute;
+                top: 40%;
+                width: 60vw;
+                height: auto; 
+                padding: 1rem; 
+                background: rgba(255, 255, 255, 0.8); /* Light background for readability */
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);;
+                z-index: 1;
+            }
+            
+            .center-img {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                opacity: 30%;
+                transform: translate(-50%, -50%);
+                max-width: 90%; /* Ensures image doesn't overflow */
+                height: auto; /* Maintains aspect ratio */
+                z-index: -1;
+            }
+
+            .corner-img {
+                position: absolute;
+                top: 3%;
+                right: 2%;
+                max-width: 30%; /* Ensures image doesn't overflow */
+                height: auto; /* Maintains aspect ratio */
+                z-index: -1;
+            }
+            
+            /* 📱 Mobile View Adjustments */
+            @media (max-width: 768px) {
+                h1 {
+                    font-size: 6vw; /* Smaller heading on mobile */
+                }
+            
+                .context-box {
+                    top: 30vh;
+                    width: 80vw; /* Make it take most of the screen width */
+                }
+            
+                .center-img {
+                    max-width: 80%; /* Reduce image size for smaller screens */
+                }
+
+                .corner-img {
+                    position: absolute;
+                    top: 5%;
+                    right: 5%;
+                    max-width: 50%; /* Ensures image doesn't overflow */
+                    height: auto; /* Maintains aspect ratio */
+                    z-index: -1;
+                }
+            }            
+        </style>
     </head>
     <body>
-        <!-- <div>Hello world!</div> -->
-        <h1 class="heading-box">virgil abloh.</h1>
-        <!-- <p class="context-box">Virgil Abloh was an American fashion designer, entrepreneur, and artistic director known for blending streetwear with luxury fashion. 
-            He was the founder of Off-White, a high-end streetwear brand, and became the Men's 
-            Artistic Director at Louis Vuitton in 2018, making history as the first Black designer to lead the brand.</p> -->
+        <!-- Use appropriate semantic elements (header, main, 
+         footer, section, article, aside, paragraph, etc.) 
+         to organize your document.  -->
+
+        <h1>VIRGIL ABLOH.</h1>
+        <div class="context-box">
+            <p>Virgil Abloh was an American fashion designer, entrepreneur, and artistic director known for blending streetwear with luxury fashion. 
+                He was the founder of Off-White, a high-end streetwear brand, and became the Men's 
+                Artistic Director at Louis Vuitton in 2018, making history as the first Black designer to lead the brand.</p>
+        </div>
+        <img class="corner-img" src="./static//virgil-abloh-portrait-off-white-interview-dezeen-hero-852x479.jpg" alt="portrait">
         <img class="center-img" src="./static/center.png" alt="center portrait">
     </body>
 </html>
