@@ -17,27 +17,30 @@
                 background-position: center;
                 background-repeat: no-repeat;
                 height: 100vh;
+                width: 100vw;
                 margin: 0;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                /* justify-content: center; */
             }
 
             h1 {
                 position: absolute;
-                font-size: 3vw; /* Adjusts font size dynamically */
+                font-size: 3vw; 
                 left: 50%;
                 top: 20%;
                 transform: translate(-50%, -50%);
                 color: rgb(31, 30, 24);
-                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adds shadow for readability */
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
                 z-index: 3;
             }
             
             p {
                 font-size: clamp(16px, 2vw, 24px); 
                 padding: 1rem; 
+                transition: max-height 0.5s ease-out;
+                overflow: hidden;
+                max-height: 200px; /* Set an initial height */
             }
 
             .context-box {
@@ -46,19 +49,31 @@
                 width: 60vw;
                 height: auto; 
                 padding: 1rem; 
-                background: rgba(255, 255, 255, 0.8); /* Light background for readability */
-                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);;
+                background: rgba(255, 255, 255, 0.8);
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
                 z-index: 1;
+                text-align: center;
             }
-            
+
+            .toggle-btn {
+                background-color: black;
+                color: white;
+                border: none;
+                padding: 0.5rem 1rem;
+                font-size: 1rem;
+                cursor: pointer;
+                margin-top: 10px;
+                border-radius: 5px;
+            }
+
             .center-img {
                 position: absolute;
                 left: 50%;
                 top: 50%;
                 opacity: 30%;
                 transform: translate(-50%, -50%);
-                max-width: 90%; /* Ensures image doesn't overflow */
-                height: auto; /* Maintains aspect ratio */
+                max-width: 90%;
+                height: auto;
                 z-index: -1;
             }
 
@@ -66,49 +81,88 @@
                 position: absolute;
                 top: 3%;
                 right: 2%;
-                max-width: 30%; /* Ensures image doesn't overflow */
-                height: auto; /* Maintains aspect ratio */
+                max-width: 30%;
+                height: auto;
                 z-index: -1;
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            .left-corner-img {
+                position: absolute;
+                top: 3%;
+                left: 2%;
+                max-width: 30%;
+                height: auto;
+                z-index: -1;
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);   
+            }
+
+            footer {
+                width: 100%;
+                height: 15%;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                background: rgba(0, 0, 0, 0.8);
+                font-size: 6px;
+                color: white;
+                text-align: center;
+                padding: 1rem;
             }
             
-            /* 📱 Mobile View Adjustments */
             @media (max-width: 768px) {
                 h1 {
-                    font-size: 6vw; /* Smaller heading on mobile */
+                    font-size: 6vw;
                 }
             
                 .context-box {
                     top: 30vh;
-                    width: 80vw; /* Make it take most of the screen width */
+                    width: 80vw;
                 }
-            
+
                 .center-img {
-                    max-width: 80%; /* Reduce image size for smaller screens */
+                    max-width: 80%;
                 }
 
                 .corner-img {
-                    position: absolute;
                     top: 5%;
                     right: 5%;
-                    max-width: 50%; /* Ensures image doesn't overflow */
-                    height: auto; /* Maintains aspect ratio */
-                    z-index: -1;
+                    max-width: 50%;
                 }
             }            
         </style>
     </head>
     <body>
-        <!-- Use appropriate semantic elements (header, main, 
-         footer, section, article, aside, paragraph, etc.) 
-         to organize your document.  -->
-
         <h1>VIRGIL ABLOH.</h1>
         <div class="context-box">
-            <p>Virgil Abloh was an American fashion designer, entrepreneur, and artistic director known for blending streetwear with luxury fashion. 
+            <p id="text-content">
+                Virgil Abloh was an American fashion designer, entrepreneur, and artistic director known for blending streetwear with luxury fashion. 
                 He was the founder of Off-White, a high-end streetwear brand, and became the Men's 
-                Artistic Director at Louis Vuitton in 2018, making history as the first Black designer to lead the brand.</p>
+                Artistic Director at Louis Vuitton in 2018, making history as the first Black designer to lead the brand.
+            </p>
+            <button class="toggle-btn" onclick="toggleText()">Show/Hide</button>
         </div>
-        <img class="corner-img" src="./static//virgil-abloh-portrait-off-white-interview-dezeen-hero-852x479.jpg" alt="portrait">
+        <footer>
+            <p>&copy; 2025 Tribute to Virgil Abloh. All rights reserved.</p>
+            <p>Inspired by his legacy in fashion, art, and culture.</p>
+        </footer>
+        <img class="corner-img" src="./static/virgil-abloh-portrait-off-white-interview-dezeen-hero-852x479.jpg" alt="portrait">
         <img class="center-img" src="./static/center.png" alt="center portrait">
+        <img class="left-corner-img" src="./static//off-white-nike-the-20-virgil-abloh.png" alt="left corner">
+
+        <script>
+            function toggleText() {
+                var text = document.getElementById("text-content");
+                if (text.style.display === "none" || text.style.maxHeight === "0px") {
+                    text.style.display = "block";
+                    text.style.maxHeight = "200px"; // Adjust height as needed
+                } else {
+                    text.style.maxHeight = "0px";
+                    setTimeout(() => {
+                        text.style.display = "none";
+                    }, 500); // Matches transition duration
+                }
+            }
+        </script>
     </body>
 </html>
